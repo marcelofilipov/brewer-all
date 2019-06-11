@@ -11,8 +11,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>brewer-config</module>
-		<module>brewer-war</module>
+		<module>brewer-web</module>
 		<module>brewer-ear</module>
 	</modules>
 	
