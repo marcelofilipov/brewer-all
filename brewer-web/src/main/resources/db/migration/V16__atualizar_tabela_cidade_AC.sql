@@ -1,0 +1,25 @@
+-- Cidade do estado do Acre
+
+INSERT INTO cidade (codigo, nome, codigo_estado) VALUES
+(79, 'Acrelândia', 1),
+(80, 'Assis Brasil', 1),
+(81, 'Brasiléia', 1),
+(82, 'Bujari', 1),
+(83, 'Capixaba', 1),
+(84, 'Cruzeiro do Sul', 1),
+(85, 'Epitaciolândia', 1),
+(86, 'Feijó', 1),
+(87, 'Jordão', 1),
+(88, 'Mâncio Lima', 1),
+(89, 'Manoel Urbano', 1),
+(90, 'Marechal Thaumaturgo', 1),
+(91, 'Plácido de Castro', 1),
+(92, 'Porto Acre', 1),
+(93, 'Porto Walter', 1),
+(94, 'Rio Branco', 1),
+(95, 'Rodrigues Alves', 1),
+(96, 'Santa Rosa do Purus', 1),
+(97, 'Sena Madureira', 1),
+(98, 'Senador Guiomard', 1),
+(99, 'Tarauacá', 1),
+(100, 'Xapuri', 1);

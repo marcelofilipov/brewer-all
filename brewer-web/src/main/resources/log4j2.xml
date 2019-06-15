@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="warn">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<!-- <PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS} %logger{36} [%M]: %msg%n" />  -->
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" />
+			<!-- <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" /> -->
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="com.thefilipov.brewer" level="debug"/>
+		
+		<!-- <Logger name="com.thefilipov.brewer.controller" level="info"/> -->
+		<!-- <Logger name="com.thefilipov.brewer.storage" level="debug"/> -->
+		
+		<Logger name="org.hibernate.SQL" level="debug"/>
+	
+		<Root level="info">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
