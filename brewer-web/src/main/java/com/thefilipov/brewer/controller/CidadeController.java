@@ -49,12 +49,12 @@ public class CidadeController {
 	@Autowired
 	private CidadeService cidadeService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CidadeController.class); 
+	private static final Logger LOG = LoggerFactory.getLogger(CidadeController.class); 
 	
 	@RequestMapping("/nova")
 	public ModelAndView nova(Cidade cidade) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		ModelAndView mv = new ModelAndView("cidade/CadastroCidade");
@@ -80,8 +80,8 @@ public class CidadeController {
 	// @CacheEvict(value = "cidades", allEntries = true)
 	@CacheEvict(value = "cidades", key = "#cidade.estado.codigo", condition = "#cidade.temEstado()")
 	public ModelAndView salvar(@Valid Cidade cidade, BindingResult result, RedirectAttributes attributes) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		if (result.hasErrors()) {
@@ -113,14 +113,14 @@ public class CidadeController {
 	
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Cidade cidade) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		try {
 			cidadeService.excluir(cidade); 
 		} catch(ImpossivelExcluirEntidadeException e) {
-			logger.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
+			LOG.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		
@@ -129,8 +129,8 @@ public class CidadeController {
 	
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {		
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		Cidade cidade = cidades.buscarComEstado(codigo);

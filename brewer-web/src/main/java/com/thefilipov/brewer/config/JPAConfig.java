@@ -32,7 +32,7 @@ import com.thefilipov.brewer.repository.Cervejas;
 @EnableTransactionManagement
 public class JPAConfig {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JPAConfig.class);
+	private static final Logger LOG = LoggerFactory.getLogger(JPAConfig.class);
 
 	@Profile("LO")
 	@Bean
@@ -48,8 +48,8 @@ public class JPAConfig {
 		URI jdbUri = new URI(System.getenv("JAWSDB_URL"));
 
 	    String username = jdbUri.getUserInfo().split(":")[0];
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber() + ":::" + username);
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber() + ":::" + username);
 		}
 
 	    String password = jdbUri.getUserInfo().split(":")[1];

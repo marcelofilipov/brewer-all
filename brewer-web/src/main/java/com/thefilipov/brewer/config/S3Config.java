@@ -23,10 +23,12 @@ public class S3Config {
 
 	@Bean
 	public AmazonS3 amazonS3() {
-		AWSCredentials credenciais = new BasicAWSCredentials(env.getProperty("AWS_ACCESS_KEY_ID"),
+		AWSCredentials credenciais = new BasicAWSCredentials(
+				env.getProperty("AWS_ACCESS_KEY_ID"),
 				env.getProperty("AWS_SECRET_ACCESS_KEY"));
 		AmazonS3 amazonS3 = new AmazonS3Client(credenciais, new ClientConfiguration());
-		Region regiao = Region.getRegion(Regions.SA_EAST_1);
+		//AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+		Region regiao = Region.getRegion(Regions.US_EAST_2);
 		amazonS3.setRegion(regiao);
 		return amazonS3;
 	}

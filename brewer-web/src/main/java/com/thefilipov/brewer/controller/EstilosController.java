@@ -42,12 +42,12 @@ public class EstilosController {
 	@Autowired
 	private Estilos estilos;
 	
-	private static final Logger logger = LoggerFactory.getLogger(EstilosController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(EstilosController.class);
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Estilo estilo) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		return new ModelAndView("estilo/CadastroEstilo");
@@ -55,8 +55,8 @@ public class EstilosController {
 
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Estilo estilo, BindingResult result, Model model, RedirectAttributes attributes) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		if (result.hasErrors()) {
@@ -77,8 +77,8 @@ public class EstilosController {
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Estilo estilo, BindingResult result) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		if(result.hasErrors()) {
@@ -104,14 +104,14 @@ public class EstilosController {
 
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Estilo estilo) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		try {
 			estilosService.excluir(estilo); 
 		} catch(ImpossivelExcluirEntidadeException e) {
-			logger.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
+			LOG.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		
@@ -120,8 +120,8 @@ public class EstilosController {
 
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {		
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 
 		Estilo estilo = estilos.findByCodigo(codigo);

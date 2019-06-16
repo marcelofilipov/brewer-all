@@ -49,7 +49,7 @@ public class ClientesController {
 	@Autowired
 	private Clientes clientes;
 
-	private static final Logger logger = LoggerFactory.getLogger(ClientesController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ClientesController.class);
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Cliente cliente) {
@@ -114,7 +114,7 @@ public class ClientesController {
 		try {
 			clienteService.excluir(cliente); 
 		} catch(ImpossivelExcluirEntidadeException e) {
-			logger.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
+			LOG.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		

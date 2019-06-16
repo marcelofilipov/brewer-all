@@ -23,7 +23,7 @@ public class ValorItensEstoqueDTO {
 	}
 
 	public Long getTotalItens() {
-		return totalItens;
+		return (totalItens == null) ? 0L : totalItens;
 	}
 
 	public void setTotalItens(Long totalItens) {

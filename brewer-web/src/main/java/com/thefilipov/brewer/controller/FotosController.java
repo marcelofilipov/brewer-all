@@ -20,7 +20,7 @@ import com.thefilipov.brewer.storage.FotoStorageRunnable;
 @RequestMapping("/fotos")
 public class FotosController {
 
-	private static final Logger logger = LoggerFactory.getLogger(FotosController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(FotosController.class);
 	
 	@Autowired
 	private FotoStorage fotoStorage;
@@ -32,8 +32,8 @@ public class FotosController {
 		Thread thread = new Thread(new FotoStorageRunnable(files, resultado, fotoStorage));
 		thread.start();
 
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		return resultado;

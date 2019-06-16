@@ -1,4 +1,4 @@
-package com.thefilipov.brewer.config;
+	package com.thefilipov.brewer.config;
 
 import java.util.Properties;
 

@@ -29,9 +29,9 @@ import net.coobird.thumbnailator.Thumbnails;
 @Component
 public class FotoStorageS3 implements FotoStorage {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FotoStorageS3.class);
+	private static final Logger LOG = LoggerFactory.getLogger(FotoStorageS3.class);
 	
-	private static final String BUCKET = "thefilipovbrewer";
+	private static final String BUCKET = "filipov-brewer";
 
 	@Autowired
 	private AmazonS3 amazonS3;
@@ -63,7 +63,7 @@ public class FotoStorageS3 implements FotoStorage {
 		try {
 			return IOUtils.toByteArray(is);
 		} catch (IOException e) {
-			logger.error("Não conseguiu recuperar foto do S3", e);
+			LOG.error("Não conseguiu recuperar foto do S3", e);
 		}
 		return null;
 	}

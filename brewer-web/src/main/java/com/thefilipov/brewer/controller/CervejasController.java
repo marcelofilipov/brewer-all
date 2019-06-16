@@ -49,12 +49,12 @@ public class CervejasController {
 	@Autowired
 	private Cervejas cervejas;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CervejasController.class); 
+	private static final Logger LOG = LoggerFactory.getLogger(CervejasController.class); 
 	
 	@RequestMapping("/nova")
 	public ModelAndView nova(Cerveja cerveja) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
@@ -67,8 +67,8 @@ public class CervejasController {
 	
 	@RequestMapping(value = { "/nova", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		if (result.hasErrors()) {
@@ -104,14 +104,14 @@ public class CervejasController {
 
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Cerveja cerveja) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		try {
 			cervejasService.excluir(cerveja); 
 		} catch(ImpossivelExcluirEntidadeException e) {
-			logger.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
+			LOG.warn(BrewerConstants.MENSAGEM_LOG_ATENCAO + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		
@@ -120,8 +120,8 @@ public class CervejasController {
 	
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Cerveja cerveja) {
-		if(logger.isDebugEnabled()) {
-			logger.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
 		}
 		
 		ModelAndView mv = nova(cerveja);

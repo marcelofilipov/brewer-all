@@ -27,7 +27,7 @@ import com.thefilipov.brewer.storage.FotoStorage;
 @Component
 public class Mailer {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Mailer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Mailer.class);
 
 	@Autowired
 	private JavaMailSender mailSender;
@@ -87,7 +87,7 @@ public class Mailer {
 					
 			mailSender.send(mimeMessage);
 		} catch (MessagingException e) {
-			logger.error("Erro enviando e-mail", e);
+			LOG.error("Erro enviando e-mail", e);
 		}
 		
 	}
