@@ -32,6 +32,7 @@ public class FotoStorageS3 implements FotoStorage {
 	private static final Logger LOG = LoggerFactory.getLogger(FotoStorageS3.class);
 	
 	private static final String BUCKET = "filipov-brewer";
+	private static final String LINKFILIPOVBREWER = "https://filipov-brewer.s3.us-east-2.amazonaws.com/";
 
 	@Autowired
 	private AmazonS3 amazonS3;
@@ -81,7 +82,7 @@ public class FotoStorageS3 implements FotoStorage {
 	@Override
 	public String getUrl(String foto) {
 		if (!StringUtils.isEmpty(foto)) {
-			return "https://s3-sa-east-1.amazonaws.com/thefilipovbrewer/" + foto;
+			return LINKFILIPOVBREWER + foto;
 		}
 		
 		return null;
