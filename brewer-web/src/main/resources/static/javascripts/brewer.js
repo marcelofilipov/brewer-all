@@ -92,15 +92,15 @@ Brewer.Security = (function() {
 	
 }());
 
-numeral.locale('pt-br');
-
 Brewer.formatarMoeda = function(valor) {
+	numeral.locale('pt-br');
 	return numeral(valor).format('0,0.00');
 }
 
 Brewer.recuperarValor = function(valorFormatado) {
-	return valorFormatado.valueOf();
-	//return numeral(valorFormatado).value();
+	numeral.locale('pt-br');
+	return numeral(valorFormatado).value();
+	//return numeral().unformat(valorFormatado);
 }
 
 $(function() {

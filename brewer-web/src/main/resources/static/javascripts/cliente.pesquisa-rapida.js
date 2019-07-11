@@ -1,11 +1,11 @@
-Brewer = Brewer || {}
+Brewer = Brewer || {};
 
 Brewer.PesquisaRapidaCliente = (function() {
 	
 	function PesquisaRapidaCliente() {
 		this.pesquisaRapidaClientesModal = $('#pesquisaRapidaClientes');
 		this.nomeInput = $('#nomeClienteModal');
-		this.pesquisaRapidaBtn = $('.js-pesquisa-rapida-clientes-btn');
+		this.pesquisaRapidaBtn = $('.js-pesquisa-rapida-clientes-btn'); 
 		this.containerTabelaPesquisa = $('#containerTabelaPesquisaRapidaClientes');
 		this.htmlTabelaPesquisa = $('#tabela-pesquisa-rapida-cliente').html();
 		this.template = Handlebars.compile(this.htmlTabelaPesquisa);
@@ -14,6 +14,12 @@ Brewer.PesquisaRapidaCliente = (function() {
 	
 	PesquisaRapidaCliente.prototype.iniciar = function() {
 		this.pesquisaRapidaBtn.on('click', onPesquisaRapidaClicado.bind(this));
+		this.pesquisaRapidaClientesModal.on('shown.bs.modal', onModalShow.bind(this));
+
+	}
+	
+	function onModalShow() {
+		this.nomeInput.focus();
 	}
 	
 	function onPesquisaRapidaClicado(event) {
@@ -25,7 +31,7 @@ Brewer.PesquisaRapidaCliente = (function() {
 			contentType: 'application/json',
 			data: {
 				nome: this.nomeInput.val()
-			},
+			}, 
 			success: onPesquisaConcluida.bind(this),
 			error: onErroPesquisa.bind(this)
 		});
@@ -39,7 +45,7 @@ Brewer.PesquisaRapidaCliente = (function() {
 		
 		var tabelaClientePesquisaRapida = new Brewer.TabelaClientePesquisaRapida(this.pesquisaRapidaClientesModal);
 		tabelaClientePesquisaRapida.iniciar();
-	}
+	} 
 	
 	function onErroPesquisa() {
 		this.mensagemErro.removeClass('hidden');
@@ -58,11 +64,6 @@ Brewer.TabelaClientePesquisaRapida = (function() {
 	
 	TabelaClientePesquisaRapida.prototype.iniciar = function() {
 		this.cliente.on('click', onClienteSelecionado.bind(this));
-		this.pesquisaRapidaClientesModal.on('show.bs.modal', onModalShow.bind(this));
-	}
-	
-	function onModalShow() {
-		this.nomeInput.focus();
 	}
 	
 	function onClienteSelecionado(evento) {
@@ -74,6 +75,7 @@ Brewer.TabelaClientePesquisaRapida = (function() {
 	}
 	
 	return TabelaClientePesquisaRapida;
+	
 }());
 
 $(function() {
