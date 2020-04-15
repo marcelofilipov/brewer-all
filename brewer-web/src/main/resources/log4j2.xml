@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
 	<Properties>
-		<Property name="BASE_PATH_LOG">Z:\\myLogs</Property>
+		<Property name="BASE_PATH_LOG">/tmp/myLogs</Property>
 		<Property name="LOG_PATTERN">%d{dd-MM-yyyy HH:mm:ss.SSS} [%-5level] %logger{36}: %msg%n</Property>
 	</Properties>
 

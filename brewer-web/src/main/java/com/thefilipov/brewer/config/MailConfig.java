@@ -16,8 +16,7 @@ import com.thefilipov.brewer.mail.Mailer;
 @Configuration
 @ComponentScan(basePackageClasses = Mailer.class)
 @PropertySource({ "classpath:env/mail-${envTarget:PE}.properties" })
-@PropertySource(value = { "file:\\${USERPROFILE}\\.brewer-mail.properties" }, ignoreResourceNotFound = true)
-// @PropertySource(value = { "file://${HOME}/.brewer-mail.properties" }, ignoreResourceNotFound = true)
+@PropertySource(value = { "file://${HOME}//.brewer-mail.properties" }, ignoreResourceNotFound = true)
 public class MailConfig {
 
 	@Autowired
