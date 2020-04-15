@@ -61,7 +61,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
-		servletContext.setInitParameter("spring.profiles.default", "storage-s3, LO");
+		servletContext.setInitParameter("spring.profiles.default", "storage-local, LO");
 	}
 
 }

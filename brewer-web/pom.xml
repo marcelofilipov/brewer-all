@@ -11,9 +11,9 @@
 	</parent>
 
 	<artifactId>brewer-web</artifactId>
-	
+
 	<packaging>war</packaging>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -27,33 +27,35 @@
 
 		<!-- JaCoCo -->
 		<jacoco.version>0.8.4</jacoco.version>
-		<!-- [WARNING] Rule violated for bundle brewer-web: instructions covered ratio is 0.1, but expected minimum is 0.98 -->
+		<!-- [WARNING] Rule violated for bundle brewer-web: instructions covered 
+			ratio is 0.1, but expected minimum is 0.98 -->
 		<jacoco.percentage.instruction>0.1</jacoco.percentage.instruction>
-		<!-- [WARNING] Rule violated for bundle brewer-web: classes missed count is 94, but expected maximum is 1 -->
+		<!-- [WARNING] Rule violated for bundle brewer-web: classes missed count 
+			is 94, but expected maximum is 1 -->
 		<jacoco.count.class>94</jacoco.count.class>
-		
+
 		<sonar.exclusions>
 			**/dto/**,
 			**/model/**,
-        	**/util/**
+			**/util/**
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
 			**/dto/**,
 			**/model/**,
-        	**/util/**
+			**/util/**
 		</sonar.coverage.exclusions>
 		<sonar.test.exclusions>
 			**/test/*
 		</sonar.test.exclusions>
-		
+
 		<!-- FlyWay -->
-		<flyway-maven-plugin.version>4.1.2</flyway-maven-plugin.version>
-		
+		<flyway-maven-plugin.version>6.3.3</flyway-maven-plugin.version>
+
 		<!-- MySql -->
-		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
+		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
 
 		<!-- Spring MVC -->
-		<spring-framework.version>4.3.5.RELEASE</spring-framework.version>
+		<spring-framework.version>5.0.2.RELEASE</spring-framework.version>
 
 		<!-- Servlet API -->
 		<servlet.version>3.1.0</servlet.version>
@@ -63,64 +65,60 @@
 
 		<!-- Bean Validation / Hibernate Validator -->
 		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-		
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
-		
+
 		<!-- Logging -->
-		<log4j.version>2.6</log4j.version>
-		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>	
-		
+		<log4j.version>2.10.0</log4j.version>
+		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
-		
+
 		<!-- Spring Data JPA -->
 		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
-		<!-- <spring-data-jpa.version>[1.11.22,)</spring-data-jpa.version> -->	
-		
+		<!-- <spring-data-jpa.version>[1.11.22,)</spring-data-jpa.version> -->
+
 		<!-- Jackson - JSON -->
 		<jackson-core.version>2.9.10.3</jackson-core.version>
-		
+
 		<!-- thumbnailator - Gerar Thumbnail -->
- 		<!-- https://github.com/coobird/thumbnailator -->
+		<!-- https://github.com/coobird/thumbnailator -->
 		<thumbnailator.version>0.4.8</thumbnailator.version>
-		
+
 		<!-- Thymeleaf extras data attribute -->
 		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
-		
-		<!-- Cache - Guava -->
-		<guava.version>19.0</guava.version>
-		
+
 		<!-- Apache Bean Utils -->
 		<commons-beanutils-version>1.9.2</commons-beanutils-version>
-		
+
 		<!-- Spring Security -->
 		<spring-security.version>4.1.1.RELEASE</spring-security.version>
-		
+
 		<!-- Thymeleaf - Extras Spring Security -->
 		<thymeleaf-extras-springsecurity.version>3.0.0.RELEASE</thymeleaf-extras-springsecurity.version>
-		
+
 		<!-- JUnit -->
 		<junit.version>4.12</junit.version>
-		
+
 		<!-- Java Mail -->
 		<javax.mail.version>1.5.6</javax.mail.version>
-		
+
 		<!-- AWS SDK - S3 -->
-		<!-- Não possui a região us-east-2
-			<aws-java-sdk-s3.version>1.10.77</aws-java-sdk-s3.version> -->
+		<!-- Não possui a região us-east-2 <aws-java-sdk-s3.version>1.10.77</aws-java-sdk-s3.version> -->
 		<aws-java-sdk-s3.version>1.11.50</aws-java-sdk-s3.version>
-		
+
 		<!-- Apache Commons DBCP -->
 		<commons-dbcp2.version>2.1.1</commons-dbcp2.version>
-		
+
 		<!-- JasperReports -->
 		<jasperreports.version>6.3.0</jasperreports.version>
-		
+
 		<!-- JasperReports Fonts -->
 		<jasperreports-fonts.version>6.0.0</jasperreports-fonts.version>
 	</properties>
-	
+
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
@@ -132,24 +130,24 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
 			</plugin>
-			
+
 			<plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <executions>
-                    <execution>
-                        <id>default-prepare-agent</id>
-                        <goals>
-                        	<goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
 
 					<execution>
 						<id>default-report</id>
@@ -172,47 +170,52 @@
 					</execution>
 
 					<execution>
-					    <id>default-check</id>
-					    <phase>test</phase>
-					    <goals>
-					        <goal>check</goal>
-					    </goals>
-					    <configuration>
-					    	<systemPropertyVariables>
-					    		<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
-					    	</systemPropertyVariables>
-					        <rules>
-					            <rule implementation="org.jacoco.maven.RuleConfiguration">
-					                <element>BUNDLE</element>
-					                <limits>
-					                    <limit implementation="org.jacoco.report.check.Limit">
-					                        <counter>INSTRUCTION</counter>
-					                        <value>COVEREDRATIO</value>
-					                        <minimum>${jacoco.percentage.instruction}</minimum>
-					                    </limit>
-					                    <limit implementation="org.jacoco.report.check.Limit">
+						<id>default-check</id>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<systemPropertyVariables>
+								<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+							</systemPropertyVariables>
+							<rules>
+								<rule implementation="org.jacoco.maven.RuleConfiguration">
+									<element>BUNDLE</element>
+									<limits>
+										<limit implementation="org.jacoco.report.check.Limit">
+											<counter>INSTRUCTION</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>${jacoco.percentage.instruction}</minimum>
+										</limit>
+										<limit implementation="org.jacoco.report.check.Limit">
 											<counter>CLASS</counter>
 											<value>MISSEDCOUNT</value>
 											<maximum>${jacoco.count.class}</maximum>
 										</limit>
-					                </limits>
-					            </rule>
-					        </rules>
-					    </configuration>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
 					</execution>
-                    
-                </executions> 
+
+				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>${flyway-maven-plugin.version}</version>
-				<configuration>
-					<driver>com.mysql.jdbc.Driver</driver>
-				</configuration>
+				<dependencies>
+					<!-- MySQL Driver -->
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql-connector-java.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -220,7 +223,9 @@
 				<executions>
 					<execution>
 						<phase>package</phase>
-						<goals><goal>copy</goal></goals>
+						<goals>
+							<goal>copy</goal>
+						</goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
@@ -234,21 +239,21 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
-	
+
 	<profiles>
 		<profile>
 			<id>LO</id>
 		</profile>
-		
+
 		<profile>
 			<id>PE</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			
+
 			<dependencies>
 				<!-- MySQL Driver -->
 				<dependency>
@@ -317,12 +322,12 @@
 			<version>${hibernate-validator.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<dependency>
-    		<groupId>nz.net.ultraq.thymeleaf</groupId>
-    		<artifactId>thymeleaf-layout-dialect</artifactId>
-    		<version>${thymeleaf-layout-dialect.version}</version>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 
 		<!-- Logging -->
@@ -346,7 +351,7 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j.version}</version>
 		</dependency>
-		
+
 		<!-- JPA / Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -356,29 +361,29 @@
 		</dependency>
 
 		<!-- Hibernate - Java 8 support -->
-        <dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-java8</artifactId>
-    		<version>${hibernate.version}</version>
-    		<scope>compile</scope>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Spring Data JPA -->
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>${spring-data-jpa.version}</version>
-		    <scope>compile</scope>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Jackson - JSON -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson-core.version}</version>
-		    <scope>compile</scope>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-core.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- thumbnailator - Gerar Thumbnail -->
 		<dependency>
 			<groupId>net.coobird</groupId>
@@ -386,20 +391,12 @@
 			<version>${thumbnailator.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Thymeleaf extras data attribute -->
 		<dependency>
-    		<groupId>com.github.mxab.thymeleaf.extras</groupId>
-    		<artifactId>thymeleaf-extras-data-attribute</artifactId>
-    		<version>${thymeleaf-extras-data-attribute.version}</version>
-    		<scope>compile</scope>
-		</dependency>		
-
-		<!-- Cache - Guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
+			<groupId>com.github.mxab.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-data-attribute</artifactId>
+			<version>${thymeleaf-extras-data-attribute.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -416,7 +413,7 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>${commons-beanutils-version}</version>
 			<scope>compile</scope>
-		</dependency>				
+		</dependency>
 
 		<!-- Spring Security -->
 		<dependency>
@@ -438,8 +435,8 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 			<version>${thymeleaf-extras-springsecurity.version}</version>
 			<scope>compile</scope>
-		</dependency>				
-		
+		</dependency>
+
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -447,22 +444,22 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Java Mail -->
 		<dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>${javax.mail.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        
-        <!-- AWS SDK - S3 -->
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${javax.mail.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- AWS SDK - S3 -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>${aws-java-sdk-s3.version}</version>
 		</dependency>
-		
+
 		<!-- Apache Commons DBCP -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -470,7 +467,7 @@
 			<version>${commons-dbcp2.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- JasperReports -->
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
@@ -479,33 +476,33 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-		    <groupId>net.sf.jasperreports</groupId>
-		    <artifactId>jasperreports-fonts</artifactId>
-		    <version>${jasperreports-fonts.version}</version>
-		    <scope>compile</scope>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>${jasperreports-fonts.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Commons Lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency>
-		
+
 	</dependencies>
-	
+
 	<repositories>
-	
-		<!-- SONATYPE NEXUS -->	
+
+		<!-- SONATYPE NEXUS -->
 		<repository>
 			<id>sonatype-nexus-snapshots</id>
-    		<name>Sonatype Nexus Snapshots</name>
-    		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    		<snapshots>
-      			<enabled>true</enabled>
-    		</snapshots>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
-		
+
 		<!-- NAKED OBJECTS -->
 		<repository>
 			<id>no-snapshotsd</id>
@@ -555,7 +552,7 @@
 			<id>repo2</id>
 			<url>http://repo2.maven.org/maven2</url>
 		</repository>
-		
+
 	</repositories>
-	
+
 </project>
