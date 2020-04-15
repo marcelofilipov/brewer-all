@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
@@ -26,7 +25,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -53,7 +52,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 @EnableSpringDataWebSupport
 @EnableCaching
 @EnableAsync
-public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class WebConfig implements ApplicationContextAware, WebMvcConfigurer {
 
 	private ApplicationContext applicationContext;
 
