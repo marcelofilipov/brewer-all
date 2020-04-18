@@ -3,10 +3,12 @@ package com.thefilipov.brewer.config;
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 
+import javax.cache.Caching;
+
 import org.springframework.beans.BeansException;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -138,17 +140,10 @@ public class WebConfig implements ApplicationContextAware, WebMvcConfigurer {
 //	}
 	
 	@Bean
-	public CacheManager cacheManager() {
-//		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder()
-//				.maximumSize(3)
-//				.expireAfterAccess(15, TimeUnit.MINUTES);
-//		
-//		GuavaCacheManager cacheManager = new GuavaCacheManager();
-//		cacheManager.setCacheBuilder(cacheBuilder);
-//		return cacheManager;
-		
-		/* Tipo de Cache Simples - utilizado para testes e pequenos projetos */
-		return new ConcurrentMapCacheManager();
+	public CacheManager cacheManager() throws Exception {
+		return new JCacheCacheManager(Caching.getCachingProvider().getCacheManager(
+				getClass().getResource("/cache/ehcache.xml").toURI(),
+				getClass().getClassLoader()));
 	}
 	
 	@Bean
