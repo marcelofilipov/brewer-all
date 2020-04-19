@@ -85,7 +85,7 @@ public class FotoStorageLocal implements FotoStorage {
 
 	@Override
 	public String getUrl(String foto) {
-		return "http://localhost:8080/brewer/fotos/" + foto;
+		return "http://localhost:8080/brewer-web/fotos/" + foto;
 	}
 	
 	private void criarPastas() {
