@@ -42,7 +42,7 @@ public class UsuarioController {
 	@Autowired
 	private Usuarios usuarios;
 	
-	@RequestMapping("/novo")
+	@GetMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView mv = new ModelAndView("usuario/CadastroUsuario");
 		mv.addObject("grupos", grupos.findAll());

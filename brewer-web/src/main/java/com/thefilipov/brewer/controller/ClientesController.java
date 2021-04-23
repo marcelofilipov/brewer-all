@@ -51,7 +51,7 @@ public class ClientesController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ClientesController.class);
 	
-	@RequestMapping("/novo")
+	@GetMapping("/novo")
 	public ModelAndView novo(Cliente cliente) {
 		ModelAndView mv = new ModelAndView("cliente/CadastroCliente");
 		mv.addObject("tiposPessoa", TipoPessoaValues.values());
@@ -92,7 +92,7 @@ public class ClientesController {
 		return mv;
 	}
 	
-	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody List<Cliente> pesquisar(String nome) {
 		validarTamanhoNome(nome);
 		return clientes.findByNomeStartingWithIgnoreCase(nome);
