@@ -44,7 +44,7 @@ public class EstilosController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(EstilosController.class);
 
-	@RequestMapping("/novo")
+	@GetMapping("/novo")
 	public ModelAndView novo(Estilo estilo) {
 		if(LOG.isDebugEnabled()) {
 			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());

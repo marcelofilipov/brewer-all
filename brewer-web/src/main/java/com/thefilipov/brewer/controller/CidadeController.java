@@ -51,7 +51,7 @@ public class CidadeController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(CidadeController.class); 
 	
-	@RequestMapping("/nova")
+	@GetMapping("/nova")
 	public ModelAndView nova(Cidade cidade) {
 		if(LOG.isDebugEnabled()) {
 			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
@@ -66,7 +66,7 @@ public class CidadeController {
 	/* Cache para qualquer Estado */
 	// @Cacheable("cidades")
 	@Cacheable(value = "cidades", key = "#codigoEstado")
-	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Cidade> pesquisarPorCodigoEstado(
 			@RequestParam(name = "estado", defaultValue = "-1") Long codigoEstado) {
 		try {

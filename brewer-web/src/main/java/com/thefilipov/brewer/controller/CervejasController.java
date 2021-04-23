@@ -51,7 +51,7 @@ public class CervejasController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(CervejasController.class); 
 	
-	@RequestMapping("/nova")
+	@GetMapping("/nova")
 	public ModelAndView nova(Cerveja cerveja) {
 		if(LOG.isDebugEnabled()) {
 			LOG.debug("on the line " + Thread.currentThread().getStackTrace()[1].getLineNumber());
@@ -97,7 +97,7 @@ public class CervejasController {
 		return mv;
 	}
 	
-	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<CervejaDTO> pesquisar(String skuOuNome) {
 		return cervejas.porSkuOuNome(skuOuNome);
 	}
