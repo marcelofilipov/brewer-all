@@ -106,7 +106,7 @@
 
 		<!-- AWS SDK - S3 -->
 		<!-- Não possui a região us-east-2 <aws-java-sdk-s3.version>1.10.77</aws-java-sdk-s3.version> -->
-		<aws-java-sdk-s3.version>1.11.50</aws-java-sdk-s3.version>
+		<aws-java-sdk-s3.version>1.12.261</aws-java-sdk-s3.version>
 
 		<!-- Apache Commons DBCP -->
 		<commons-dbcp2.version>2.1.1</commons-dbcp2.version>
