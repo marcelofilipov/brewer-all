@@ -1,6 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/marcelofilipov/brewer-all)
 ![GitHub repo size](https://img.shields.io/github/repo-size/marcelofilipov/brewer-all)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/marcelofilipov/brewer-all)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/marcelofilipov/brewer-all)
 
 # Brewer
